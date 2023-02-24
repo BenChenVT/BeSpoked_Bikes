@@ -51,6 +51,7 @@ const LogIn = () => {
 
             <button onClick={onLogin}>Sign In</button>
             <button onClick={signInWithGoogle} >sign in with google</button>
+            <button onClick={() => { navigate("/") }}> go to home page </button>
             <button onClick={logOut} >log out</button>
         </div>
     )
