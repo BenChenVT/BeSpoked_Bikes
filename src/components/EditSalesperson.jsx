@@ -2,7 +2,7 @@ import React from 'react';
 import '../App.css'
 import { useNavigate, useParams } from 'react-router-dom';
 import { db } from '../config/firebase'
-import { getDoc, updateDoc, doc } from 'firebase/firestore';
+import { getDoc, updateDoc, doc, deleteDoc } from 'firebase/firestore';
 
 const EditSalesperson = () => {
 
@@ -58,6 +58,11 @@ const EditSalesperson = () => {
       ...prevFormData,
       [name]: type === "checkbox" ? checked : value
     })))
+  }
+
+  const deleteCurrent = async () => {
+    await deleteDoc(doc(db, "salesperson", id));
+    navigate(`/home/salesperson`);
   }
 
   return (
@@ -149,6 +154,7 @@ const EditSalesperson = () => {
         </div>
         <button className="greenButton" type="submit">Submit</button>
         <button className="greenButton" onClick={() => { navigate(`/home/salesperson`) }}>Cancel</button>
+        <button className="redButton" type="button" onClick={deleteCurrent}>Delete</button>
       </form>
     </div>
   )

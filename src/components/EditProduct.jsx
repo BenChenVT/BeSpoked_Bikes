@@ -2,7 +2,7 @@ import React from 'react';
 import '../App.css'
 import { useNavigate, useParams } from 'react-router-dom';
 import { db } from '../config/firebase'
-import { getDoc, updateDoc, doc } from 'firebase/firestore';
+import { getDoc, updateDoc, doc, deleteDoc } from 'firebase/firestore';
 
 const EditProduct = () => {
 
@@ -56,9 +56,14 @@ const EditProduct = () => {
     })))
   }
 
+  const deleteCurrent = async () => {
+    await deleteDoc(doc(db, "products", id));
+    navigate(`/home/product`);
+  }
+
   return (
     <div className="addSale">
-      <h1>You are editing the value of {Id.ProductId}</h1>
+      <h1>You are editing the value of {product.name}</h1>
       <form onSubmit={handleSubmit}>
         <div className="input">
           <label>name:&nbsp;</label>
@@ -132,7 +137,15 @@ const EditProduct = () => {
           />
         </div>
         <button className="greenButton" type="submit">Submit</button>
-        <button className="greenButton" onClick={() => { navigate(`/home/product`) }}>Cancel</button>
+        <button 
+          className="greenButton" 
+          onClick={() => { navigate(`/home/product`) }}>Cancel
+        </button>
+        <button 
+          className="redButton" 
+          type="button" 
+          onClick={deleteCurrent}>Delete
+        </button>
       </form>
     </div>
   )
