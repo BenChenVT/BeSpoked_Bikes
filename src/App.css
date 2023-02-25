@@ -104,3 +104,29 @@
 .redButton:hover {
     background-color: #8e3e3e;
 }
+
+.commission {
+    display: flex;
+}
+
+.left {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.left input {
+  margin-bottom: 10px;
+}
+
+.right {
+  flex: 3;
+  padding: 20px;
+}
+
+#bar-chart {
+    background-color: #ccc;
+    height: 100%;
+    width: 100%;
+}

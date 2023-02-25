@@ -40,6 +40,7 @@ const Home = () => {
                 <button onClick={() => { navigate("/home/salesperson") }} className="grid-item">View SalesPerson</button>
                 <button onClick={() => { navigate("/home/sale") }} className="grid-item">View Sale</button>
                 <button onClick={() => { navigate("/home/CreateSale") }} className="grid-item">Create Sale</button>
+                <button onClick={() => { navigate("/home/Commission") }} className="grid-item">Commission Report</button>
             </div>
             
         </div>

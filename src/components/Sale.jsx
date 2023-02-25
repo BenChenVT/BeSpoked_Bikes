@@ -8,38 +8,41 @@ import { auth } from '../config/firebase';
 
 const Sale = () => {
 
-    let navigate = useNavigate();
-    const [sales, setSales] = React.useState([]);
-    const saleRef = collection(db, "sales");
+  let navigate = useNavigate();
+  const [sales, setSales] = React.useState([]);
+  const saleRef = collection(db, "sales");
 
-    React.useEffect(()=>{
-        const getSales = async () => {
-            const data = await getDocs(saleRef);
-            setSales(data.docs.map((doc) => ({...doc.data(), id: doc.id})));         
-        }
-        getSales()
-    }, [])
+  React.useEffect(()=>{
+    const getSales = async () => {
+      const data = await getDocs(saleRef);
+      setSales(data.docs.map((doc) => ({...doc.data(), id: doc.id})));         
+    }
+    getSales()
+  }, [])
 
 
     return (
-        <div>
-            <button 
-                className="greenButton" 
-                onClick={() => { navigate(`/home/${String(auth.lastNotifiedUid)}`) }}>
-                    Home
-            </button>
-            {sales.map((sale) => {
-                return (
-                    <div key={sale.id} className="productCard">
-                        <div>Product: {sale.product}</div>
-                        <div>Salesperson: {sale.salesperson}</div>
-                        <div>Customer: {sale.customer}</div>
-                        <div>Sale Date: {new Date(sale.saleDate).toLocaleDateString("en-US")}</div>
-                </div>
-               )
-            })}
-        </div>
-
+      <div>
+        <button 
+          className="greenButton" 
+          onClick={() => { navigate(`/home/${String(auth.lastNotifiedUid)}`) }}>
+            Home
+        </button>
+        <button
+          className="greenButton">
+          Filter by Date
+        </button>
+        {sales.map((sale) => {
+          return (
+            <div key={sale.id} className="productCard">
+              <div>Product: {sale.product}</div>
+              <div>Salesperson: {sale.salesperson}</div>
+              <div>Customer: {sale.customer}</div>
+              <div>Sale Date: {new Date(sale.saleDate).toLocaleDateString("en-US")}</div>
+            </div>
+          )
+        })}
+      </div>
     )
 }
 

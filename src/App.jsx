@@ -10,10 +10,10 @@ import Sale from './components/Sale'
 import Salesperson from './components/SalesPerson'
 import CreateSale from './components/CreateSale'
 import EditProduct from './components/EditProduct'
+import Commission from './components/commission'
 
 
 function App() {
-
   return (
     <Router>
       <div>header</div>
@@ -28,6 +28,7 @@ function App() {
         <Route path="/home/salesperson" element={<Salesperson />} />
         <Route path="/home/CreateSale" element={<CreateSale />} />
         <Route path="/home/EditProduct/:ProductId" element={<EditProduct />} />
+        <Route path="/home/Commission" element={<Commission />} />
         <Route path="*" element={<h1>Error page</h1>} />
       </Routes>
       <div>footer</div>
