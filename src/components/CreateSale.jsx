@@ -3,7 +3,7 @@ import '../App.css';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../config/firebase';
 import { db } from '../config/firebase'
-import { collection, getDocs, updateDoc, doc, addDoc } from 'firebase/firestore';
+import { collection, addDoc } from 'firebase/firestore';
 
 const CreateSale = () => {
 
@@ -81,7 +81,6 @@ const CreateSale = () => {
           onClick={() => { navigate(`/home/${String(auth.lastNotifiedUid)}`) }}>Cancel</button>
       </form>
     </div>
-
   )
 }
 

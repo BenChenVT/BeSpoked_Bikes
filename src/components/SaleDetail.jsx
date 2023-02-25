@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 import { db } from '../config/firebase'
-import { collection, getDocs, query, where, getDoc, updateDoc, doc } from 'firebase/firestore';
+import { collection, getDocs, query, where, getDoc, doc } from 'firebase/firestore';
 import { useNavigate, useParams } from 'react-router-dom';
 
 
@@ -15,13 +15,16 @@ const SaleDetail = () => {
   const productRef = collection(db, "products");
   
   const [salesperson_q, setSalesperson] = React.useState([]);
-  const [product, setProduct] = React.useState([]); // here we get a query of the Mountain Bike
+  const [product, setProduct] = React.useState([]); 
+  // here we get a query of the Mountain Bike
   
   const [sale, setSale] = React.useState({
     productName: '',
     salesperson: '',
   });
 
+  // get the the salesperson's name(first) and 
+  // product name for the current sale
   React.useEffect(() => {
     const getSale = async () => {
       const docRef = doc(db, "sales", id);
@@ -35,18 +38,18 @@ const SaleDetail = () => {
     getSale()
   }, [])
 
+  // query for the matched salesperson
   React.useEffect(() => {
-    const qSalesperson = query(salespersonRef, where("firstName", "==", sale.salesperson)); // hard code for now
+    const qSalesperson = query(salespersonRef, where("firstName", "==", sale.salesperson));
 
     const getQuerySalesperson = async () => {
       const saleperson_item = await getDocs(qSalesperson);
       setSalesperson(saleperson_item.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     }
-
     getQuerySalesperson();
   }, [sale.salesperson])
 
-
+  // query for the matched product
   React.useEffect(() => {
     const qProduct = query(productRef, where("name", "==", sale.productName)); // hard code for now
 
@@ -54,12 +57,9 @@ const SaleDetail = () => {
       const product_item = await getDocs(qProduct);
       setProduct(product_item.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     }
-
     getQueryProduct();
   }, [sale.productName])
 
-
-  console.log(product[0]?.name);
 
   // can be simplified by function and map()
   return(

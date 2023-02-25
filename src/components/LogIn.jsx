@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 
 const LogIn = () => {
   let navigate = useNavigate();
-  // let { username } = useParams();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
@@ -50,10 +49,10 @@ const LogIn = () => {
         placeholder="Password"
         onChange={(e) => setPassword(e.target.value)} />
 
-      <button onClick={onLogin}>Sign In</button>
-      <button onClick={signInWithGoogle} >sign in with google</button>
-      <button onClick={() => { navigate("/") }}> go to home page </button>
-      <button onClick={logOut} >log out</button>
+      <button className="greenButton" onClick={onLogin}>Sign In</button>
+      <button className="greenButton" onClick={signInWithGoogle} >sign in with google</button>
+      <button className="greenButton" onClick={() => { navigate("/") }}> go to home page </button>
+      <button className="redButton" onClick={logOut} >log out</button>
     </div>
   )
 

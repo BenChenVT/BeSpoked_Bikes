@@ -20,31 +20,30 @@ const Sale = () => {
     getSales()
   }, [])
 
-
-    return (
-      <div>
-        <button 
-          className="greenButton" 
-          onClick={() => { navigate(`/home/${String(auth.lastNotifiedUid)}`) }}>
-            Home
-        </button>
-        <button
-          className="greenButton">
-          Filter by Date
-        </button>
-        {sales.map((sale) => {
-          return (
-            <div key={sale.id} className="productCard">
-              <div>Product: {sale.product}</div>
-              <div>Salesperson: {sale.salesperson}</div>
-              <div>Customer: {sale.customer}</div>
-              <div>Sale Date: {new Date(sale.saleDate).toLocaleDateString("en-US")}</div>
-              <button onClick={() => { navigate(`/home/SaleDetail/${String(sale.id)}`) }}>See detail</button>
-            </div>
-          )
-        })}
-      </div>
-    )
+  return (
+    <div>
+      <button 
+        className="greenButton" 
+        onClick={() => { navigate(`/home/${String(auth.lastNotifiedUid)}`) }}>
+          Home
+      </button>
+      <button
+        className="greenButton">
+        Filter by Date
+      </button>
+      {sales.map((sale) => {
+        return (
+          <div key={sale.id} className="productCard">
+            <div>Product: {sale.product}</div>
+            <div>Salesperson: {sale.salesperson}</div>
+            <div>Customer: {sale.customer}</div>
+            <div>Sale Date: {new Date(sale.saleDate).toLocaleDateString("en-US")}</div>
+            <button onClick={() => { navigate(`/home/SaleDetail/${String(sale.id)}`) }}>See detail</button>
+          </div>
+        )
+      })}
+    </div>
+  )
 }
 
 export default Sale;

@@ -3,7 +3,6 @@ import '../App.css'
 import { useNavigate, useParams } from 'react-router-dom';
 import { db } from '../config/firebase'
 import { getDoc, updateDoc, doc } from 'firebase/firestore';
-import { auth } from '../config/firebase';
 
 const EditProduct = () => {
 
