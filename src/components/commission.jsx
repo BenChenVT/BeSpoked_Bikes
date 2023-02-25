@@ -1,15 +1,19 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { signOut } from 'firebase/auth';
 import '../App.css';
+import { auth } from '../config/firebase';
 
 
 const Commission = () => {
-
+  let navigate = useNavigate();
   return (
     <div className="commission">
       <form>
         <div className="left">
+          <button className="greenButton"
+            onClick={() => { navigate(`/home/${String(auth.lastNotifiedUid)}`) }}
+            type="button">Home
+          </button>
           <label for="input1">First Name</label>
           <input type="text" id="input1" placeholder="i.e. Ben"/>
           <label for="input2">Last Name</label>
@@ -18,7 +22,7 @@ const Commission = () => {
           <input type="month" id="input3" placeholder="i.e. Spring"/>
           <p>* Choose a starting month, and see the commission report for the next 4 month.</p>
           <button className="greenButton" type="submit">Search</button>
-          <button className="redButton">Clear All</button>
+          <button className="redButton" type="button">Clear All</button>
         </div>
       </form>
       <div className="right">

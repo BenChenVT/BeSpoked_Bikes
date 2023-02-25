@@ -46,7 +46,7 @@ const EditProduct = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    updateUser(Id.productId);
+    updateUser();
     navigate(`/home/product`);
   };
 

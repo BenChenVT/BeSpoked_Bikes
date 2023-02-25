@@ -37,10 +37,10 @@ const Salesperson = () => {
               <div>Phone: {salesperson.phone}</div>
               <div>From: {new Date(salesperson.startDate).toLocaleDateString("en-US")}</div>
               {salesperson.isTerminated ? 
-                <div>To: Now</div> : 
                 <div>To: {new Date(salesperson.terminationDate)
-                  .toLocaleDateString("en-US")}</div>}
+                  .toLocaleDateString("en-US")}</div> : <div>To: Now</div>}
               <div>Manager: {salesperson.manager}</div>
+              <button onClick={() => { navigate(`/home/EditSalesperson/${String(salesperson.id)}`) }}>Edit</button>
             </div>
           )
         })}

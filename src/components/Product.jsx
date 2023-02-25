@@ -38,7 +38,7 @@ const Product = () => {
             <div>Purchase Price: ${pro.purchasePrice}</div>
             <div>Sale Price: ${pro.salePrice}</div>
             <div>Qty: {pro.Qty}</div>
-              <button onClick={() => { navigate(`/home/EditProduct/${String(pro.id)}`)}}>Edit</button>
+            <button onClick={() => { navigate(`/home/EditProduct/${String(pro.id)}`)}}>Edit</button>
           </div>
           )
         })}
