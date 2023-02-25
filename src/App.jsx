@@ -8,6 +8,7 @@ import Customer from './components/Customer'
 import Product from './components/Product'
 import Sale from './components/Sale'
 import Salesperson from './components/SalesPerson'
+import AddEntity from './components/AddEntity'
 
 
 function App() {
@@ -24,6 +25,8 @@ function App() {
         <Route path="/home/product" element={<Product />} />
         <Route path="/home/sale" element={<Sale />} />
         <Route path="/home/salesperson" element={<Salesperson />} />
+        <Route path="/home/addEntity" element={<AddEntity />} />
+        {/* <Route path="/home/EditEntity" element={<AddEntity />} /> */}
         <Route path="*" element={<h1>Error page</h1>} />
       </Routes>
       <div>footer</div>

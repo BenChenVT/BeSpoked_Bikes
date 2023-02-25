@@ -12,14 +12,6 @@ const Home = () => {
     console.log({username});
 
 
-
-    // const routeChange = () => {
-    //     let path = "/home/"+String(username)+"/sale";
-    //     navigate(path);
-    //     console.log("the path is " + path);
-    // }
-
-
     const handleLogout = () => {
         signOut(auth).then(()=> {
             navigate("/")
@@ -43,10 +35,11 @@ const Home = () => {
             <button onClick={handleLogout}>Log out</button>
             <h1>Welcome to BeSpoked Bikes Sales Tracking System, Ben</h1>
             <div className="grid-container">
-                <button onClick={() => { navigate("/home/customer") }} className="grid-item">Customer</button>
-                <button onClick={() => { navigate("/home/product") }} className="grid-item">Product</button>
-                <button onClick={() => { navigate("/home/sale") }} className="grid-item">SalesPerson</button>
-                <button onClick={() => { navigate("/home/salesperson") }} className="grid-item">Sale</button>
+                <button onClick={() => { navigate("/home/customer") }} className="grid-item">View Customer</button>
+                <button onClick={() => { navigate("/home/product") }} className="grid-item">View Product</button>
+                <button onClick={() => { navigate("/home/sale") }} className="grid-item">View SalesPerson</button>
+                <button onClick={() => { navigate("/home/salesperson") }} className="grid-item">View Sale</button>
+                <button onClick={() => { navigate("/home/addEntity") }} className="grid-item">Add Entity</button>
             </div>
             
         </div>
