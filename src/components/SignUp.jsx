@@ -28,7 +28,7 @@ const SignUp = () => {
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)} />
 
-            <button onClick={createUser} >Sign In</button>
+            <button onClick={createUser} >Sign Up</button>
             <button onClick={() => { navigate("/") }}> go to home page </button>
             <button onClick={() => { navigate(`/home/${"ben"}`) }}>Successfully logged in TestButton</button>
         </div>

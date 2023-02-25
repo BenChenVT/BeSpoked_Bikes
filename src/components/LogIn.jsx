@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const LogIn = () => {
     let navigate = useNavigate();
+    // let { username } = useParams();
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
 
@@ -13,7 +14,7 @@ const LogIn = () => {
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             const user = userCredential.user;
-            navigate(`/home/${"ben"}`)
+            navigate(`/home/${String(user.uid)}`)
             console.log(user);
         })
         .catch((err) => {
