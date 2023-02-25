@@ -11,6 +11,7 @@ const Product = () => {
   const [product, setProduct] = React.useState([]);
   const productRef = collection(db, "products");
 
+
   React.useEffect(()=>{
     const getProduct = async () => {
       const data = await getDocs(productRef);

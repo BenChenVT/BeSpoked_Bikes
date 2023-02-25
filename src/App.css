@@ -131,3 +131,25 @@
     height: 100%;
     width: 100%;
 }
+
+
+
+.saleDetail {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(8, 1fr);
+	grid-gap: 10px;
+}
+
+.saleDetail > div{
+	padding: 10px;
+	box-sizing: border-box;
+	background-color: #f0f0f0;
+}
+
+h3 {
+	margin: 0;
+}
+
+
+

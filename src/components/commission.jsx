@@ -14,11 +14,11 @@ const Commission = () => {
             onClick={() => { navigate(`/home/${String(auth.lastNotifiedUid)}`) }}
             type="button">Home
           </button>
-          <label for="input1">First Name</label>
+          <label htmlFor="input1">First Name</label>
           <input type="text" id="input1" placeholder="i.e. Ben"/>
-          <label for="input2">Last Name</label>
+          <label htmlFor="input2">Last Name</label>
           <input type="text" id="input2" placeholder="i.e. Chen"/>
-          <label for="input3">Starting Month</label>
+          <label htmlFor="input3">Starting Month</label>
           <input type="month" id="input3" placeholder="i.e. Spring"/>
           <p>* Choose a starting month, and see the commission report for the next 4 month.</p>
           <button className="greenButton" type="submit">Search</button>

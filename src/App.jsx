@@ -12,7 +12,7 @@ import CreateSale from './components/CreateSale'
 import EditProduct from './components/EditProduct'
 import Commission from './components/Commission'
 import EditSalesperson from './components/EditSalesperson'
-
+import SaleDetail from './components/SaleDetail'
 
 function App() {
   return (
@@ -27,6 +27,7 @@ function App() {
         <Route path="/home/product" element={<Product />} />
         <Route path="/home/sale" element={<Sale />} />
         <Route path="/home/salesperson" element={<Salesperson />} />
+        <Route path="/home/saleDetail/:SaleId" element={<SaleDetail />} />
         <Route path="/home/CreateSale" element={<CreateSale />} />
         <Route path="/home/EditProduct/:ProductId" element={<EditProduct />} />
         <Route path="/home/EditSalesperson/:SalespersonId" element={<EditSalesperson />} />

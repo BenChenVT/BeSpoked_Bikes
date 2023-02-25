@@ -39,6 +39,7 @@ const Sale = () => {
               <div>Salesperson: {sale.salesperson}</div>
               <div>Customer: {sale.customer}</div>
               <div>Sale Date: {new Date(sale.saleDate).toLocaleDateString("en-US")}</div>
+              <button onClick={() => { navigate(`/home/SaleDetail/${String(sale.id)}`) }}>See detail</button>
             </div>
           )
         })}

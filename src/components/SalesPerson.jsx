@@ -40,7 +40,9 @@ const Salesperson = () => {
                 <div>To: {new Date(salesperson.terminationDate)
                   .toLocaleDateString("en-US")}</div> : <div>To: Now</div>}
               <div>Manager: {salesperson.manager}</div>
-              <button onClick={() => { navigate(`/home/EditSalesperson/${String(salesperson.id)}`) }}>Edit</button>
+              <button 
+                onClick={() => 
+                  { navigate(`/home/EditSalesperson/${String(salesperson.id)}`) }}>Edit</button>
             </div>
           )
         })}
