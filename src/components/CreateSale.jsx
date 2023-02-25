@@ -1,17 +1,26 @@
 import React from 'react';
-import '../App.css'
+import '../App.css';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../config/firebase';
+import { db } from '../config/firebase'
+import { collection, getDocs, updateDoc, doc, addDoc } from 'firebase/firestore';
 
 const CreateSale = () => {
 
     let navigate = useNavigate();
     const [sale, setSale] = React.useState({product: '', salesperson:'', customer:'', saleDate:''});
 
+    const createNewSale = async () => {
+        const saleRef = collection(db, "sales");
+        const newSale = sale;
+        addDoc(saleRef, newSale);
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        createNewSale();
         console.log(`${sale.product}, ${sale.salesperson}, ${sale.customer}, ${sale.saleDate}`);
+        navigate(`/home/${String(auth.lastNotifiedUid)}`)
     };
 
     const handleChange = (event) => {
@@ -58,15 +67,18 @@ const CreateSale = () => {
                 <div className="input">
                     <label>Sale Date:&nbsp;</label>
                     <input
-                        type="text"
+                        type="date"
                         id="saleDate"
                         name="saleDate"
                         value={sale.saleDate}
                         onChange={handleChange}
                     />
                 </div>
-                <button className="greenButton" type="submit">Submit</button>
-                <button className="greenButton" onClick={() => { navigate(`/home/${String(auth.lastNotifiedUid)}`) }}>Cancel</button>
+                <button 
+                    className="greenButton" type="submit">Submit</button>
+                <button 
+                    className="greenButton" 
+                    onClick={() => { navigate(`/home/${String(auth.lastNotifiedUid)}`) }}>Cancel</button>
             </form>
         </div>
 

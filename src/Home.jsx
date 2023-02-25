@@ -37,8 +37,8 @@ const Home = () => {
             <div className="grid-container">
                 <button onClick={() => { navigate("/home/customer") }} className="grid-item">View Customer</button>
                 <button onClick={() => { navigate("/home/product") }} className="grid-item">View Product</button>
-                <button onClick={() => { navigate("/home/sale") }} className="grid-item">View SalesPerson</button>
-                <button onClick={() => { navigate("/home/salesperson") }} className="grid-item">View Sale</button>
+                <button onClick={() => { navigate("/home/salesperson") }} className="grid-item">View SalesPerson</button>
+                <button onClick={() => { navigate("/home/sale") }} className="grid-item">View Sale</button>
                 <button onClick={() => { navigate("/home/CreateSale") }} className="grid-item">Create Sale</button>
             </div>
             
