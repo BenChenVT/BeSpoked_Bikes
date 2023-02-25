@@ -12,12 +12,6 @@ const Sale = () => {
     const [sales, setSales] = React.useState([]);
     const saleRef = collection(db, "sales");
 
-    const getTime = () => {
-        const dateFromFire = sales.saleDate;
-        const result = new Intl.DateTimeFormat('en-US').format(dateFromFire)
-        return result;
-    }
-
     React.useEffect(()=>{
         const getSales = async () => {
             const data = await getDocs(saleRef);
