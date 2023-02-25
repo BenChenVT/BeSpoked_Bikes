@@ -9,6 +9,7 @@ import Product from './components/Product'
 import Sale from './components/Sale'
 import Salesperson from './components/SalesPerson'
 import CreateSale from './components/CreateSale'
+import EditProduct from './components/EditProduct'
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path="/home/sale" element={<Sale />} />
         <Route path="/home/salesperson" element={<Salesperson />} />
         <Route path="/home/CreateSale" element={<CreateSale />} />
+        <Route path="/home/EditProduct/:ProductId" element={<EditProduct />} />
         <Route path="*" element={<h1>Error page</h1>} />
       </Routes>
       <div>footer</div>

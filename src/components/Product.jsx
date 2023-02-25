@@ -10,7 +10,6 @@ const Product = () => {
     let navigate = useNavigate();
     const [product, setProduct] = React.useState([]);
     const productRef = collection(db, "products");
-    const [newProduct, setNewProduct] = React.useState([]);
 
 
 
@@ -26,11 +25,13 @@ const Product = () => {
     }, [])
 
 
-    console.log("hello");
-    console.log(product.id);
     return (
         <div>
-            <button className="greenButton" onClick={() => { navigate(`/home/${String(auth.lastNotifiedUid)}`) }}>Home</button>
+            <button 
+                className="greenButton" 
+                onClick={() => { navigate(`/home/${String(auth.lastNotifiedUid)}`) }}>
+                    Home
+            </button>
             {product.map((pro) => {
                 return (
                 <div key={pro.id} className="productCard">
@@ -40,7 +41,7 @@ const Product = () => {
                     <div>Purchase Price: ${pro.purchasePrice}</div>
                     <div>Sale Price: ${pro.salePrice}</div>
                     <div>Qty: {pro.Qty}</div>
-                    <button>Edit</button>
+                        <button onClick={() => { navigate(`/home/EditProduct/${String(pro.id)}`)}}>Edit</button>
                 </div>
                )
             })}
