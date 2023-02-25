@@ -25,21 +25,21 @@ const Home = () => {
         return (
             <div>
                 <h1>Welcome to BeSpoked Bikes Sales Tracking System No name follow</h1>
-                <button onClick={() => { navigate("/login") }}>Log In</button>
-                <button onClick={() => { navigate("/signup") }}>Sign Up</button>
+                <button className="greenButton" onClick={() => { navigate("/login") }}>Log In</button>
+                <button className="greenButton" onClick={() => { navigate("/signup") }}>Sign Up</button>
             </div>
         )
     }
     return(
         <div>
-            <button onClick={handleLogout}>Log out</button>
+            <button className="redButton" onClick={handleLogout}>Log out</button>
             <h1>Welcome to BeSpoked Bikes Sales Tracking System, Ben</h1>
             <div className="grid-container">
                 <button onClick={() => { navigate("/home/customer") }} className="grid-item">View Customer</button>
                 <button onClick={() => { navigate("/home/product") }} className="grid-item">View Product</button>
                 <button onClick={() => { navigate("/home/sale") }} className="grid-item">View SalesPerson</button>
                 <button onClick={() => { navigate("/home/salesperson") }} className="grid-item">View Sale</button>
-                <button onClick={() => { navigate("/home/addEntity") }} className="grid-item">Add Entity</button>
+                <button onClick={() => { navigate("/home/CreateSale") }} className="grid-item">Create Sale</button>
             </div>
             
         </div>

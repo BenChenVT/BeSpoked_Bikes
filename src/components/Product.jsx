@@ -30,7 +30,7 @@ const Product = () => {
     console.log(product.id);
     return (
         <div>
-            <button onClick={() => { navigate(`/home/${String(auth.lastNotifiedUid)}`) }}>Home</button>
+            <button className="greenButton" onClick={() => { navigate(`/home/${String(auth.lastNotifiedUid)}`) }}>Home</button>
             {product.map((pro) => {
                 return (
                 <div key={pro.id} className="productCard">
