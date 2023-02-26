@@ -1,5 +1,10 @@
 body {
     background-image: url("./assets/bikeShop.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    padding: 30px;
     /* background-color: rgba(255, 255, 255, 0.791); */
 }
 
@@ -133,7 +138,8 @@ body {
 }
 
 .left {
-  flex: 1;
+  max-width: 150px;
+  
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -145,7 +151,7 @@ body {
 }
 
 .right {
-  flex: 3;
+  flex: 1;
   padding: 20px;
 }
 
