@@ -50,7 +50,7 @@ const LogIn = () => {
         placeholder="Password"
         onChange={(e) => setPassword(e.target.value)} />
 
-      <button className="greenButton" onClick={onLogin}>Sign In</button>
+      <button className="greenButton" onClick={onLogin}>Log In</button>
       <button className="greenButton" onClick={signInWithGoogle} >sign in with google</button>
       <button className="greenButton" onClick={() => { navigate("/") }}> go to home page </button>
       <button className="redButton" onClick={logOut} >log out</button>

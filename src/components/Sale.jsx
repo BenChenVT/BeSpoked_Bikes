@@ -34,10 +34,10 @@ const Sale = () => {
       {sales.map((sale) => {
         return (
           <div key={sale.id} className="productCard">
+            <div>Sale Date: {new Date(sale.saleDate).toLocaleDateString("en-US")}</div>
             <div>Product: {sale.product}</div>
             <div>Salesperson: {sale.salesperson}</div>
             <div>Customer: {sale.customer}</div>
-            <div>Sale Date: {new Date(sale.saleDate).toLocaleDateString("en-US")}</div>
             <button onClick={() => { navigate(`/home/SaleDetail/${String(sale.id)}`) }}>See detail</button>
           </div>
         )
