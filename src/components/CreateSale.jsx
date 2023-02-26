@@ -78,10 +78,10 @@ const CreateSale = () => {
           />
         </div>
         <button 
-          className="greenButton" type="submit">Submit</button>
+          className="greenButton" type="submit">Add</button>
         <button 
-          className="greenButton" 
-          onClick={() => { navigate(`/home/${String(auth.lastNotifiedUid)}`) }}>Cancel</button>
+          className="redButton" 
+          onClick={() => { navigate(`/home/${String(auth.lastNotifiedUid)}`) }}>Discard</button>
       </form>
     </div>
   )

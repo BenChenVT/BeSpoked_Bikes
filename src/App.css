@@ -1,23 +1,44 @@
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 100px);
-    grid-gap: 10px;
-    height: 500px;
+body {
+    background-image: url("./assets/bikeShop.jpg");
+    /* background-color: rgba(255, 255, 255, 0.791); */
 }
 
-.grid-item {
-    background-color: #ccc;
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 100px);
+    grid-gap: 10px;
+    margin-bottom: 50px;
+    /* height: 500px; */
+}
+
+.grid-item_view {
+    background-color: rgba(180, 244, 150, 0.675);
     padding: 20px;
-    font-size: 30px;
+    font-size: 20px;
     text-align: center;
     border-radius: 8px;
     transition: background-color 0.5s;
 }
 
-.grid-item:hover {
-    background-color: #555;
-    color: #fff;
+.grid-item_add {
+    background-color: rgba(244, 150, 150, 0.675);
+    padding: 20px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 8px;
+    transition: background-color 0.5s;
+}
+
+.grid-item_view:hover {
+    background-color: #90a729;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.grid-item_add:hover {
+    background-color: #c74528;
+    color: #ffffff;
     cursor: pointer;
 }
 
@@ -27,7 +48,7 @@
     justify-content: space-between;
     align-items: center;
     height: 40px;
-    background-color: #c1c1c1;
+    background-color: rgba(185, 243, 221, 0.675);
     margin-top: 8px;
     padding: 4px;
 }
@@ -43,12 +64,13 @@
 .productCard > button {
     margin-top: 10px;
     padding: 5px;
-    background-color: #626262;
+    background-color: rgba(37, 125, 249, 0.675);
     color: #fdfdfd;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.5s;
 }
 
 .productCard > button:hover {

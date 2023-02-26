@@ -36,36 +36,35 @@ const Home = () => {
   }
   return(
     <div>
-      <button className="redButton" onClick={handleLogout}>Log out</button>
       <h1>Welcome to BeSpoked Bikes Sales Tracking System</h1>
       <div className="grid-container">
         <button 
           onClick={() => { navigate("/home/customer") }} 
-          className="grid-item">View Customer
+          className="grid-item_view">View Customer
         </button>
         <button 
           onClick={() => { navigate("/home/product") }} 
-          className="grid-item">View Product</button>
+          className="grid-item_view">View Product</button>
         <button 
           onClick={() => { navigate("/home/salesperson") }} 
-          className="grid-item">View SalesPerson</button>
+          className="grid-item_view">View SalesPerson</button>
         <button 
           onClick={() => { navigate("/home/sale") }} 
-          className="grid-item">View Sale</button>
+          className="grid-item_view">View Sale</button>
         <button 
           onClick={() => { navigate("/home/CreateSale") }} 
-          className="grid-item">Create Sale</button>
-        <button 
-          onClick={() => { navigate("/home/Commission") }} 
-          className="grid-item">Commission Report</button>
+          className="grid-item_add">Create Sale</button>
         <button
           onClick={() => { navigate("/home/AddProduct") }}
-          className="grid-item">Add Product</button>
+          className="grid-item_add">Add Product</button>
         <button
           onClick={() => { navigate("/home/AddSalesperson") }}
-          className="grid-item">Add Salesperson</button>
+          className="grid-item_add">Add Salesperson</button>
+        <button
+          onClick={() => { navigate("/home/Commission") }}
+          className="grid-item_add">Commission Report</button>
       </div>
-        
+      <button className="redButton" onClick={handleLogout}>Log out</button>
     </div>
   )
 }
