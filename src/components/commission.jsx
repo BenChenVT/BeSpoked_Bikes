@@ -97,6 +97,13 @@ const Commission = () => {
   const productArr = [...new Set(allProducts)];
   const uniqueProduct = new Set();
   productArr.forEach(element => uniqueProduct.add(element));
+  const productReactElement = productArr.map(element => <li key={element}>{element}</li>)
+
+  const allCustomer = findAllSale().map(element => element.customer);
+  const customerArr = [...new Set(allCustomer)];
+  const uniqueCustomer = new Set();
+  customerArr.forEach(element => uniqueCustomer.add(element));
+  const customerReactElement = customerArr.map(element => <li key={element}>{element}</li>)
 
   React.useEffect(() => {
     const getProduct = async () => {
@@ -135,7 +142,7 @@ const Commission = () => {
     }
   }
   
-  console.log(totalCommission());
+  console.log(productReactElement);
   //--------------------- end of logic ---------------------
   
   
@@ -155,8 +162,8 @@ const Commission = () => {
         event.preventDefault();
         setResult({
           commission: totalCommission(),
-          products: ["hello", "hehe", "this"],
-          customers: ["personA", "personB"]
+          products: productReactElement,
+          customers: customerReactElement
         });
       }
     }else{
@@ -167,8 +174,10 @@ const Commission = () => {
         startingMonth: ''
       });
     }
-    
   };
+
+
+  
 
   return (
     <div className="commission">
@@ -204,28 +213,20 @@ const Commission = () => {
           <button 
             className="greenButton" 
             type="submit">Search</button>
-          <button 
-            className="redButton" 
-            type="button">Clear All</button>
         </div>
       </form>
       <div className="right">
         <div className="report">
           <div>
-            <h3>Totoal commission earned: {result.commission}</h3>
-          </div>
+            <h3>Totoal commission earned: ${result.commission}</h3></div>
           <div>
             <h3>Products sold:</h3>
-            <p>{result.products}</p> 
-          </div>
+            <p>{result.products}</p></div>
           <div>
             <h3>Customer connections:</h3>
-            <p>{result.customers}</p>
-          </div>
+            <p>{result.customers}</p></div>
           <div>
-            <h3>+</h3>
-            <h3>Coming Soon</h3>
-          </div>
+            <h3>Coming Soon . . . </h3></div>
         </div>
       </div>
     </div>
