@@ -4,12 +4,12 @@
 
 ## Description
 
-[BeSpoked Bike] is a [Sales Tracking system]. It is built with Node.js, and uses React for the front-end. The project was developed using VS Code.
+BeSpoked Bike is a [Sales Tracking system]. It is built with Node.js, and uses React for the front-end. The project was developed using VS Code.
 
 ## Features
 
-- [view]: [see the sales, customers, salespersons, and products]
-- [edit]: [edit most of the data.]
+- view: see the sales, customers, salespersons, and products
+- edit: edit most of the data.
 
 ## Getting Started
 
@@ -28,4 +28,4 @@ To get started with [BeSpoked Bike], follow these steps:
 
 ## Contact
 
-[xiangkechen1016@gmail.com]
+xiangkechen1016@gmail.com
