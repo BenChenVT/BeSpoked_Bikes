@@ -26,11 +26,11 @@ const AddSalesperson = () => {
   const salesPRef = collection(db, "salesperson");
   const [salespersonLookUp, setLookUp] = React.useState([]);
   React.useEffect(() => {
-    const qProduct = query(salesPRef, 
+    const qSalesperson = query(salesPRef, 
       where("firstName", "==", String(salesperson.firstName)), 
       where("lastName", "==", String(salesperson.lastName)));
     const getQuerySalesp = async () => {
-      const salesperson_item = await getDocs(qProduct);
+      const salesperson_item = await getDocs(qSalesperson);
       setLookUp(salesperson_item.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id
@@ -55,7 +55,6 @@ const AddSalesperson = () => {
       alert("This salesperson already exists. No duplicate Please.");
       setLookUp([]);
     }
-    
   };
 
   const handleChange = (event) => {
