@@ -8,7 +8,11 @@ import { collection, addDoc } from 'firebase/firestore';
 const CreateSale = () => {
 
   let navigate = useNavigate();
-  const [sale, setSale] = React.useState({product: '', salesperson:'', customer:'', saleDate:''});
+  const [sale, setSale] = React.useState({
+    product: '', 
+    salesperson:'', 
+    customer:'', 
+    saleDate:''});
 
   const createNewSale = async () => {
     const saleRef = collection(db, "sales");
@@ -19,7 +23,6 @@ const CreateSale = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     createNewSale();
-    console.log(`${sale.product}, ${sale.salesperson}, ${sale.customer}, ${sale.saleDate}`);
     navigate(`/home/${String(auth.lastNotifiedUid)}`)
   };
 

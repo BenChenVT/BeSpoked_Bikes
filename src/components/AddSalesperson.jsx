@@ -1,68 +1,35 @@
 import React from 'react';
-import '../App.css'
-import { useNavigate, useParams } from 'react-router-dom';
+import '../App.css';
+import { useNavigate } from 'react-router-dom';
+import { auth } from '../config/firebase';
 import { db } from '../config/firebase'
-import { getDoc, updateDoc, doc, deleteDoc } from 'firebase/firestore';
+import { collection, addDoc } from 'firebase/firestore';
 
-const EditSalesperson = () => {
+const AddSalesperson = () => {
 
   let navigate = useNavigate();
-  const [salesperson, setSalesperson] = React.useState({
-    firstName: '',
-    lastName: '',
-    address: '',
-    isTerminated: false,
-    manager:'',
-    phone:0,
-    startDate:'',
-    terminationDate:''
-  });
-  const Id = useParams();
-  const id = String(Id.SalespersonId);
+  const [salesperson, setSalesperson] = React.useState({ 
+    firstName: '', lastName: '', address: '', manager: '', 
+    phone:0, startDate:'', terminationDate:'', isTerminated:false });
 
-  React.useEffect(() => {
-    const getSalesperson = async () => {
-      const docRef = doc(db, "salesperson", id);
-      const docSnap = await getDoc(docRef);
-      setSalesperson((prevPerson) => ({
-        ...prevPerson,
-        firstName: String(docSnap.data().firstName),
-        lastName: String(docSnap.data().lastName),
-        address: String(docSnap.data().address),
-        phone: Number(docSnap.data().phone),
-        startDate: String(docSnap.data().startDate),
-        terminationDate: String(docSnap.data().terminationDate),
-        isTerminated: Boolean(docSnap.data().isTerminated),
-        manager: String(docSnap.data().manager)
-      }))
-    }
-    getSalesperson()
-  }, [])
-
-
-  const updateSalesperson = async () => {
-    const changeRef = doc(db, "salesperson", id);
+  const createNewSalesperson = async () => {
+    const salepersonRef = collection(db, "salesperson");
     const newSalesperson = salesperson;
-    const changeSnap = await updateDoc(changeRef, newSalesperson);
+    addDoc(salepersonRef, newSalesperson);
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    updateSalesperson();
-    navigate(`/home/salesperson`);
+    createNewSalesperson();
+    navigate(`/home/${String(auth.lastNotifiedUid)}`)
   };
 
   const handleChange = (event) => {
-    const {name, value, type, checked} = event.target;
+    const { name, value, type, checked } = event.target;
     setSalesperson((prevFormData => ({
       ...prevFormData,
       [name]: type === "checkbox" ? checked : value
     })))
-  }
-
-  const deleteCurrent = async () => {
-    await deleteDoc(doc(db, "salesperson", id));
-    navigate(`/home/salesperson`);
   }
 
   return (
@@ -74,6 +41,7 @@ const EditSalesperson = () => {
           <input
             type="text"
             id="firstName"
+            placeholder='i.e. Ben'
             name="firstName"
             value={salesperson.firstName}
             onChange={handleChange}
@@ -84,6 +52,7 @@ const EditSalesperson = () => {
           <input
             type="text"
             id="lastName"
+            placeholder='i.e. Chen'
             name="lastName"
             value={salesperson.lastName}
             onChange={handleChange}
@@ -94,6 +63,7 @@ const EditSalesperson = () => {
           <input
             type="text"
             id="address"
+            placeholder='i.e. Atlanta'
             name="address"
             value={salesperson.address}
             onChange={handleChange}
@@ -115,6 +85,7 @@ const EditSalesperson = () => {
           <input
             type="text"
             id="startDate"
+            placeholder='i.e. 2022-01-23'
             name="startDate"
             value={salesperson.startDate}
             onChange={handleChange}
@@ -125,6 +96,7 @@ const EditSalesperson = () => {
           <input
             type="text"
             id="terminationDate"
+            placeholder='i.e. 2023-2-25'
             name="terminationDate"
             value={salesperson.terminationDate}
             onChange={handleChange}
@@ -147,17 +119,21 @@ const EditSalesperson = () => {
           <input
             type="text"
             id="manager"
+            placeholder='i.e. Mr. K'
             name="manager"
             value={salesperson.manager}
             onChange={handleChange}
           />
         </div>
-        <button className="greenButton" type="submit">Update</button>
-        <button className="greenButton" onClick={() => { navigate(`/home/salesperson`) }}>Cancel</button>
-        <button className="redButton" type="button" onClick={deleteCurrent}>Delete</button>
+        <button className="greenButton" type="submit">Add</button>
+        <button 
+          className="redButton" 
+          onClick={() => { navigate(`/home/${String(auth.lastNotifiedUid)}`) }}>
+            Discard
+        </button>
       </form>
     </div>
   )
 }
 
-export default EditSalesperson;
+export default AddSalesperson;

@@ -13,6 +13,8 @@ import EditProduct from './components/EditProduct'
 import Commission from './components/Commission'
 import EditSalesperson from './components/EditSalesperson'
 import SaleDetail from './components/SaleDetail'
+import AddProduct from './components/AddProduct'
+import AddSalesperson from './components/AddSalesperson'
 
 function App() {
   return (
@@ -31,6 +33,8 @@ function App() {
         <Route path="/home/CreateSale" element={<CreateSale />} />
         <Route path="/home/EditProduct/:ProductId" element={<EditProduct />} />
         <Route path="/home/EditSalesperson/:SalespersonId" element={<EditSalesperson />} />
+        <Route path="/home/AddProduct" element={<AddProduct />} />
+        <Route path="/home/AddSalesperson" element={<AddSalesperson />} />
         <Route path="/home/Commission" element={<Commission />} />
         <Route path="*" element={<h1>Error page</h1>} />
       </Routes>
