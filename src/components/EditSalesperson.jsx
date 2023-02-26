@@ -4,8 +4,14 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { db } from '../config/firebase'
 import { getDoc, updateDoc, doc, deleteDoc } from 'firebase/firestore';
 
+/**
+ * this components will allow use to edit salesperson
+ * this page can be accessed from view salesperson
+ * @returns 
+ */
 const EditSalesperson = () => {
 
+  // all the hooks initialized
   let navigate = useNavigate();
   const [salesperson, setSalesperson] = React.useState({
     firstName: '',
@@ -65,6 +71,7 @@ const EditSalesperson = () => {
     navigate(`/home/salesperson`);
   }
 
+  // renderring this page
   return (
     <div className="addSale">
       <h1>You are editing salesperson {salesperson.firstName}'s profile</h1>
@@ -87,8 +94,7 @@ const EditSalesperson = () => {
             name="lastName"
             value={salesperson.lastName}
             onChange={handleChange}
-          />
-        </div>
+          /></div>
         <div className="input">
           <label>Address:&nbsp;</label>
           <input
@@ -97,8 +103,7 @@ const EditSalesperson = () => {
             name="address"
             value={salesperson.address}
             onChange={handleChange}
-          />
-        </div>
+          /></div>
         <div className="input">
           <label>Phone:&nbsp;</label>
           <input
@@ -108,8 +113,7 @@ const EditSalesperson = () => {
             name="phone"
             value={salesperson.phone}
             onChange={handleChange}
-          />
-        </div>
+          /></div>
         <div className="input">
           <label>Start Date:&nbsp;</label>
           <input
@@ -118,8 +122,7 @@ const EditSalesperson = () => {
             name="startDate"
             value={salesperson.startDate}
             onChange={handleChange}
-          />
-        </div>
+          /></div>
         {salesperson.isTerminated ? <div className="input">
           <label>Termination Date:&nbsp;</label>
           <input
@@ -140,8 +143,7 @@ const EditSalesperson = () => {
             name="isTerminated"
             checked={salesperson.isTerminated}
             onChange={handleChange}
-          />
-        </div>
+          /></div>
         <div className="input">
           <label>Manager:&nbsp;</label>
           <input
@@ -150,11 +152,17 @@ const EditSalesperson = () => {
             name="manager"
             value={salesperson.manager}
             onChange={handleChange}
-          />
-        </div>
-        <button className="greenButton" type="submit">Update</button>
-        <button className="greenButton" onClick={() => { navigate(`/home/salesperson`) }}>Cancel</button>
-        <button className="redButton" type="button" onClick={deleteCurrent}>Delete</button>
+          /></div>
+        <button 
+          className="greenButton" 
+          type="submit">Update</button>
+        <button 
+          className="greenButton" 
+          onClick={() => { navigate(`/home/salesperson`) }}>Cancel</button>
+        <button 
+          className="redButton" 
+          type="button" 
+          onClick={deleteCurrent}>Delete</button>
       </form>
     </div>
   )

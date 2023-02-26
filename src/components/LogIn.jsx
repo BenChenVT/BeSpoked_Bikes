@@ -4,7 +4,14 @@ import { auth, googleProvider } from '../config/firebase';
 import { signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
+
+/**
+ * This page allow user to login
+ * @returns 
+ */
 const LogIn = () => {
+
+  // all the hooks initialized
   let navigate = useNavigate();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -40,6 +47,7 @@ const LogIn = () => {
     }
   }
 
+  // renderring this page
   return (
     <div>
       <input
@@ -50,10 +58,18 @@ const LogIn = () => {
         placeholder="Password"
         onChange={(e) => setPassword(e.target.value)} />
 
-      <button className="greenButton" onClick={onLogin}>Log In</button>
-      <button className="greenButton" onClick={signInWithGoogle} >sign in with google</button>
-      <button className="greenButton" onClick={() => { navigate("/") }}> go to home page </button>
-      <button className="redButton" onClick={logOut} >log out</button>
+      <button 
+        className="greenButton" 
+        onClick={onLogin}>Log In</button>
+      <button 
+        className="greenButton" 
+        onClick={signInWithGoogle}>sign in with google</button>
+      <button 
+        className="greenButton" 
+        onClick={() => {navigate("/")}}> go to home page </button>
+      <button 
+        className="redButton" 
+        onClick={logOut} >log out</button>
     </div>
   )
 

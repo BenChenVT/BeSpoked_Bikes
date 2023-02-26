@@ -4,8 +4,14 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { db } from '../config/firebase'
 import { getDoc, updateDoc, doc, deleteDoc } from 'firebase/firestore';
 
+/**
+ * this components will allow use to edit produc
+ * this page can be accessed from view Product
+ * @returns 
+ */
 const EditProduct = () => {
 
+  // all the hooks initialized
   let navigate = useNavigate();
   const [product, setProduct] = React.useState({ 
     name: '', 
@@ -61,6 +67,7 @@ const EditProduct = () => {
     navigate(`/home/product`);
   }
 
+  // renderring this page
   return (
     <div className="addSale">
       <h1>You are editing the value of {product.name}</h1>

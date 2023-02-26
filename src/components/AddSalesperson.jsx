@@ -5,26 +5,28 @@ import { auth } from '../config/firebase';
 import { db } from '../config/firebase'
 import { collection, getDocs, query, where, addDoc } from 'firebase/firestore';
 
+
+/**
+ * This component will add a new salesperson
+ * with no duplication based on the first and last names
+ * @returns 
+ */
 const AddSalesperson = () => {
 
+  // all the hooks initialized
   let navigate = useNavigate();
   const [salesperson, setSalesperson] = React.useState({ 
     firstName: '', lastName: '', address: '', manager: '', 
     phone:0, startDate:'', terminationDate:'', isTerminated:false });
 
-  const createNewSalesperson = async () => {
-    const salepersonRef = collection(db, "salesperson");
-    const newSalesperson = salesperson;
-    addDoc(salepersonRef, newSalesperson);
-  }
 
-
-  //-------------------- handle duplicate---------------------
+  //------------- handle duplicate logic---------------------
   // this section of code is dealing with duplicate item,
-  // if the name of the product is duplicated, then we
+  // if the name of the salesperson is duplicated, then we
   // will find it in the firestore
   const salesPRef = collection(db, "salesperson");
   const [salespersonLookUp, setLookUp] = React.useState([]);
+  
   React.useEffect(() => {
     const qSalesperson = query(salesPRef, 
       where("firstName", "==", String(salesperson.firstName)), 
@@ -37,14 +39,19 @@ const AddSalesperson = () => {
       })));
     }
     getQuerySalesp();
-    // console.log(productLookUp)
-    // productLookUp.length will be 1 if there is a duplicate item
-  }, [salesperson]) // this product is user input
+  }, [salesperson])
 
   const checkDuplicate = () => {
     return salespersonLookUp.length === 0 ? true : false
   }
+  //-------------------- end of logic ---------------------
 
+  const createNewSalesperson = async () => {
+    const salepersonRef = collection(db, "salesperson");
+    const newSalesperson = salesperson;
+    addDoc(salepersonRef, newSalesperson);
+  }
+  
   const handleSubmit = (event) => {
     if(checkDuplicate()){
       event.preventDefault();
@@ -65,6 +72,8 @@ const AddSalesperson = () => {
     })))
   }
 
+
+  // rendering for this page
   return (
     <div className="addSale">
       <h1>You are editing salesperson {salesperson.firstName}'s profile</h1>

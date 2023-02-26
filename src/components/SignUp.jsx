@@ -4,8 +4,15 @@ import { auth, googleProvider } from '../config/firebase';
 import { createUserWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
+
+/**
+ * this component allow user to sign up and store the 
+ * username and password in firebase authentication
+ * @returns 
+ */
 const SignUp = () => {
 
+  // all the hooks initialized
   let navigate = useNavigate();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -19,6 +26,7 @@ const SignUp = () => {
     // username must be an email, password is at least 6 digit(000000)
   }
 
+  // render the page
   return (
     <div>
       <input
@@ -28,9 +36,12 @@ const SignUp = () => {
         type="password"
         placeholder="Password"
         onChange={(e) => setPassword(e.target.value)} />
-
-      <button className="greenButton" onClick={createUser} >Sign Up</button>
-      <button className="greenButton" onClick={() => { navigate("/") }}> go to home page </button>
+      <button 
+        className="greenButton" 
+        onClick={createUser} >Sign Up</button>
+      <button 
+        className="greenButton" 
+        onClick={() => { navigate("/") }}>go to home page </button>
     </div>
   )
 }

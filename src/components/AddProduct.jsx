@@ -5,18 +5,19 @@ import { auth } from '../config/firebase';
 import { db } from '../config/firebase'
 import { collection, getDocs, query, where, addDoc } from 'firebase/firestore';
 
+
+/**
+ * This component will add a new product with out a 
+ * duplicate based on the field: name
+ * @returns 
+ */
 const AddProduct = () => {
 
+  // all the hooks initialized
   let navigate = useNavigate();
   const [product, setProduct] = React.useState({ 
     name: '', manufacture: '', style: '', purchasePrice: 0,
     salePrice: 0, Qty: 0, commissionRate: 0 });
-
-  const createNewProduct = async () => {
-    const prodRef = collection(db, "products");
-    const newProd = product;
-    addDoc(prodRef, newProd);
-  }
 
   //-------------------- handle duplicate---------------------
   // this section of code is dealing with duplicate item,
@@ -41,8 +42,15 @@ const AddProduct = () => {
   const checkDuplicate = () => {
     return productLookUp.length === 0 ? true : false
   }
+  // -------------------- end of the logic --------------
+  
 
-  // -------------------- end of handle duplicate --------------
+  const createNewProduct = async () => {
+    const prodRef = collection(db, "products");
+    const newProd = product;
+    addDoc(prodRef, newProd);
+  }
+
   
   const handleSubmit = (event) => {
     if(checkDuplicate()){
@@ -64,6 +72,8 @@ const AddProduct = () => {
     })))
   }
 
+
+  // rendering for the add product page
   return (
     <div className="addSale">
       <h1>Add a new product, please put information below</h1>
@@ -77,8 +87,7 @@ const AddProduct = () => {
             name="name"
             value={product.name}
             onChange={handleChange}
-          />
-        </div>
+          /></div>
         <div className="input">
           <label>Manufacture:&nbsp;</label>
           <input
@@ -88,8 +97,7 @@ const AddProduct = () => {
             name="manufacture"
             value={product.manufacture}
             onChange={handleChange}
-          />
-        </div>
+          /></div>
         <div className="input">
           <label>Style:&nbsp;</label>
           <input
@@ -99,8 +107,7 @@ const AddProduct = () => {
             name="style"
             value={product.style}
             onChange={handleChange}
-          />
-        </div>
+          /></div>
         <div className="input">
           <label>Purchase Price:&nbsp;</label>
           <input
@@ -109,8 +116,7 @@ const AddProduct = () => {
             name="purchasePrice"
             value={product.purchasePrice}
             onChange={handleChange}
-          />
-        </div>
+          /></div>
         <div className="input">
           <label>Sale Price:&nbsp;</label>
           <input
@@ -119,8 +125,7 @@ const AddProduct = () => {
             name="salePrice"
             value={product.salePrice}
             onChange={handleChange}
-          />
-        </div>
+          /></div>
         <div className="input">
           <label>Quantity:&nbsp;</label>
           <input
@@ -129,8 +134,7 @@ const AddProduct = () => {
             name="Qty"
             value={product.Qty}
             onChange={handleChange}
-          />
-        </div>
+          /></div>
         <div className="input">
           <label>Commission Rate:&nbsp;</label>
           <input

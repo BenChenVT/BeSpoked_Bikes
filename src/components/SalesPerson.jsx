@@ -6,8 +6,13 @@ import { useNavigate } from 'react-router-dom';
 import { auth } from '../config/firebase';
 
 
+/**
+ * This component will allow user to see the salespersons
+ * @returns 
+ */
 const Salesperson = () => {
 
+  // all the hooks initialized
   let navigate = useNavigate();
   const [salesperson, setSalesperson] = React.useState([]);
   const customerRef = collection(db, "salesperson");
@@ -20,13 +25,15 @@ const Salesperson = () => {
     getCustomers()
   }, [])
 
+
+  // render the page
   return (
     <div>
       <button
         className="greenButton"
-        onClick={() => { navigate(`/home/${String(auth.lastNotifiedUid)}`) }}>
-        Home
-      </button>
+        onClick={() => { 
+          navigate(`/home/${String(auth.lastNotifiedUid)}`) }}>
+          Home</button>
       {salesperson.map((salesperson) => {
         return (
           <div key={salesperson.id} className="productCard">
@@ -37,11 +44,13 @@ const Salesperson = () => {
             <div>From: {new Date(salesperson.startDate).toLocaleDateString("en-US")}</div>
             {salesperson.isTerminated ? 
               <div>To: {new Date(salesperson.terminationDate)
-                .toLocaleDateString("en-US")}</div> : <div>To: Now</div>}
+                .toLocaleDateString("en-US")}</div> : 
+              <div>To: Now</div>}
             <div>Manager: {salesperson.manager}</div>
             <button 
-              onClick={() => 
-                { navigate(`/home/EditSalesperson/${String(salesperson.id)}`) }}>Edit</button>
+              onClick={() => { 
+                navigate(`/home/EditSalesperson/${String(salesperson.id)}`) 
+                }}>Edit</button>
           </div>
         )
       })}

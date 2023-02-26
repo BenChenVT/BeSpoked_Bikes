@@ -6,8 +6,12 @@ import { useNavigate } from 'react-router-dom';
 import { auth } from '../config/firebase';
 
 
+/**
+ * This page will show all the customer
+ */
 const Customer = () => {
 
+  // all the hooks initialized
   let navigate = useNavigate();
   const [customers, setCustomers] = React.useState([]);
   const customerRef = collection(db, "customers");
@@ -20,13 +24,13 @@ const Customer = () => {
     getCustomers()
   }, [])
 
+  // renderring for this page
   return (
     <div>
       <button
         className="greenButton"
         onClick={() => { navigate(`/home/${String(auth.lastNotifiedUid)}`) }}>
-        Home
-      </button>
+        Home</button>
       {customers.map((customer) => {
         return (
           <div key={customer.id} className="productCard">

@@ -6,8 +6,16 @@ import BarChart from './BarChart'
 import { db } from '../config/firebase'
 import { collection, getDocs, query, where, getDoc, doc, deleteDoc } from 'firebase/firestore';
 
+
+/**
+ * In this functional component, program will show a salesperson's
+ * total commission, what product he/she sold, and who she/he sold to
+ * on a certain quarter, 
+ * @returns 
+ */
 const Commission = () => {
 
+  // All the hooks needed for this function
   let navigate = useNavigate();
   const [input, setInput] = React.useState({
     firstName:'', 
@@ -30,7 +38,7 @@ const Commission = () => {
   }]);
 
   //--------------------- pull date logic ---------------------
-  // 1. we need to find if this person exists
+  // 1. we need to find if this salesperson exists
   React.useEffect(() => {
     const qSalesperson = query(salespersonRef,
       where("firstName", "==", String(input.firstName)),
@@ -67,7 +75,7 @@ const Commission = () => {
   }, [input])
 
   const findAllSale = () => {
-    // need to see if the time fit.
+    // -------- quarter checking logic ------
     const YM = input.startingMonth.split("-");
     const startArr = [Number(YM[0]), Number(YM[1])];
     const endArr = [-1, -1]
@@ -92,7 +100,7 @@ const Commission = () => {
     return saleArr;
   }
 
-  // 3. we need to find the each commission rate for every bike from 2
+  // extract information from ALL SALES (simplify later)
   const allProducts = findAllSale().map(element => element.product);
   const productArr = [...new Set(allProducts)];
   const uniqueProduct = new Set();
@@ -105,6 +113,7 @@ const Commission = () => {
   customerArr.forEach(element => uniqueCustomer.add(element));
   const customerReactElement = customerArr.map(element => <li key={element}>{element}</li>)
 
+  // 3. we need to find the each commission and sum up.
   React.useEffect(() => {
     const getProduct = async () => {
       const product_item = await getDocs(productRef);
@@ -128,7 +137,6 @@ const Commission = () => {
     }
   })
 
-
   const totalCommission = () =>{
     if(commissionArr.length < 2){
       console.log("I am here")
@@ -141,9 +149,7 @@ const Commission = () => {
       })
     }
   }
-  
-  console.log(productReactElement);
-  //--------------------- end of logic ---------------------
+  //--------------------- end of logic (data all get) ---------------------
   
   
   const handleChange = (event) => {
@@ -178,7 +184,7 @@ const Commission = () => {
 
 
   
-
+  // rendering for the Commission Report page.
   return (
     <div className="commission">
       <form onSubmit={handleSubmit}>

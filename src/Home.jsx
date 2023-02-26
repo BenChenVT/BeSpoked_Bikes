@@ -4,23 +4,25 @@ import { auth } from './config/firebase';
 import { signOut } from 'firebase/auth';
 import './App.css'
 
-
+/**
+ * this is the home page which leads to 
+ * all different component
+ * @returns
+ */
 const Home = () => {
 
+  // all the hooks initialized
   let navigate = useNavigate();
   let { username } = useParams();
-  console.log({username});
-
 
   const handleLogout = () => {
     signOut(auth).then(()=> {
       navigate("/")
     }).catch((err) => {
-      //  has error
+      console.log(err)
     })
   }
 
-  console.log(auth);
   if(username === undefined){
     return (
       <div>
@@ -34,14 +36,15 @@ const Home = () => {
       </div>
     )
   }
+
+  // render the page
   return(
     <div>
       <h1>Welcome to BeSpoked Bikes Sales Tracking System</h1>
       <div className="grid-container">
         <button 
           onClick={() => { navigate("/home/customer") }} 
-          className="grid-item_view">View Customer
-        </button>
+          className="grid-item_view">View Customer</button>
         <button 
           onClick={() => { navigate("/home/product") }} 
           className="grid-item_view">View Product</button>
@@ -64,7 +67,9 @@ const Home = () => {
           onClick={() => { navigate("/home/Commission") }}
           className="grid-item_add">Commission Report</button>
       </div>
-      <button className="redButton" onClick={handleLogout}>Log out</button>
+      <button 
+        className="redButton" 
+        onClick={handleLogout}>Log out</button>
     </div>
   )
 }

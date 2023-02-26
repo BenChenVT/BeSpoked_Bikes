@@ -5,8 +5,13 @@ import { auth } from '../config/firebase';
 import { db } from '../config/firebase'
 import { collection, addDoc } from 'firebase/firestore';
 
+
+/**
+ * This functional component is in charge of create a new sale
+ */
 const CreateSale = () => {
 
+  // all the hooks initialized
   let navigate = useNavigate();
   const [sale, setSale] = React.useState({
     product: '', 
@@ -33,6 +38,7 @@ const CreateSale = () => {
     })))
   }
 
+  // rendering for create sale page
   return (
     <div className="addSale">
       <h1>Add a new sale, please put information below</h1>
