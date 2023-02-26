@@ -3,7 +3,7 @@ import '../App.css';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../config/firebase';
 import { db } from '../config/firebase'
-import { collection, getDocs, query, where, getDoc, doc, deleteDoc, addDoc } from 'firebase/firestore';
+import { collection, getDocs, query, where, addDoc } from 'firebase/firestore';
 
 const AddProduct = () => {
 

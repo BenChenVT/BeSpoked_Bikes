@@ -3,7 +3,7 @@ import '../App.css';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../config/firebase';
 import { db } from '../config/firebase'
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, getDocs, query, where, addDoc } from 'firebase/firestore';
 
 const AddSalesperson = () => {
 
@@ -18,10 +18,44 @@ const AddSalesperson = () => {
     addDoc(salepersonRef, newSalesperson);
   }
 
+
+  //-------------------- handle duplicate---------------------
+  // this section of code is dealing with duplicate item,
+  // if the name of the product is duplicated, then we
+  // will find it in the firestore
+  const salesPRef = collection(db, "salesperson");
+  const [salespersonLookUp, setLookUp] = React.useState([]);
+  React.useEffect(() => {
+    const qProduct = query(salesPRef, 
+      where("firstName", "==", String(salesperson.firstName)), 
+      where("lastName", "==", String(salesperson.lastName)));
+    const getQuerySalesp = async () => {
+      const salesperson_item = await getDocs(qProduct);
+      setLookUp(salesperson_item.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id
+      })));
+    }
+    getQuerySalesp();
+    // console.log(productLookUp)
+    // productLookUp.length will be 1 if there is a duplicate item
+  }, [salesperson]) // this product is user input
+
+  const checkDuplicate = () => {
+    return salespersonLookUp.length === 0 ? true : false
+  }
+
   const handleSubmit = (event) => {
-    event.preventDefault();
-    createNewSalesperson();
-    navigate(`/home/${String(auth.lastNotifiedUid)}`)
+    if(checkDuplicate()){
+      event.preventDefault();
+      createNewSalesperson();
+      navigate(`/home/${String(auth.lastNotifiedUid)}`);
+    }
+    else{
+      alert("This salesperson already exists. No duplicate Please.");
+      setLookUp([]);
+    }
+    
   };
 
   const handleChange = (event) => {
