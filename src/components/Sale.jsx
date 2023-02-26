@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css'
 import { db } from '../config/firebase'
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../config/firebase';
 
@@ -11,6 +11,7 @@ const Sale = () => {
   let navigate = useNavigate();
   const [sales, setSales] = React.useState([]);
   const saleRef = collection(db, "sales");
+  const [reverseOrder, setReverseOrder] = React.useState(true);
 
   React.useEffect(()=>{
     const getSales = async () => {
@@ -20,6 +21,23 @@ const Sale = () => {
     getSales()
   }, [])
 
+
+  const handleOrder = () => {
+    const orderQ = reverseOrder ? query(saleRef, orderBy("saleDate")) : query(saleRef, orderBy("saleDate", "desc"));
+    const getOrderQuery = async () => {
+      const sale_item = await getDocs(orderQ);
+      setSales(sale_item.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    }
+    getOrderQuery();
+    reverse();
+  }
+  
+  const reverse = () => {
+    setReverseOrder(prevOrder => !prevOrder);
+    console.log(reverseOrder);
+  }
+  
+
   return (
     <div>
       <button 
@@ -28,8 +46,10 @@ const Sale = () => {
           Home
       </button>
       <button
+        type="button"
+        onClick={() => {handleOrder()}}
         className="greenButton">
-        Filter by Date
+        Filter by Date {reverseOrder ? "(latest first)" : "(oldest first)"}
       </button>
       {sales.map((sale) => {
         return (
