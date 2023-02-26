@@ -25,8 +25,6 @@ const Commission = () => {
 
   //--------------------- pull date logic ---------------------
   // 1. we need to find if this person exists
-  // 2. we need to FIND ALL SALES associate with this person
-  // 3. we need to find the each commission rate for every bike from 2
   React.useEffect(() => {
     const qSalesperson = query(salespersonRef,
       where("firstName", "==", String(input.firstName)),
@@ -45,6 +43,7 @@ const Commission = () => {
     return salesperson.length === 0 ? false : true
   }
 
+  // 2. we need to FIND ALL SALES associate with this person
   React.useEffect(() => {
     const qSale = query(saleRef,
       where("salesperson", "==", String(input.firstName)));
@@ -58,7 +57,7 @@ const Commission = () => {
     getQuerySale();
   }, [input])
 
-  const findAllSaleProduct = () => {
+  const findAllSale = () => {
     // need to see if the time fit.
     const YM = input.startingMonth.split("-");
     const startArr = [Number(YM[0]), Number(YM[1])];
@@ -71,7 +70,7 @@ const Commission = () => {
       endArr[1] = startArr[1] + 2;
     }
 
-    const saleProductArr = sale.filter((element) => {
+    const saleArr = sale.filter((element) => {
       const arr = element.saleDate.split("-");
       const dateArr = [Number(arr[0]), Number(arr[1])];
       if (dateArr[0] >= startArr[0] && 
@@ -81,13 +80,14 @@ const Commission = () => {
           return element;
         }
     });
-    return saleProductArr;
+    return saleArr;
   }
 
-  const allProducts = findAllSaleProduct().map(element => element.product);
-  const uniqueProducts = [...new Set(allProducts)];
-  const productSet = new Set();
-  uniqueProducts.forEach(element => productSet.add(element));
+  // 3. we need to find the each commission rate for every bike from 2
+  const allProducts = findAllSale().map(element => element.product);
+  const productArr = [...new Set(allProducts)];
+  const uniqueProduct = new Set();
+  productArr.forEach(element => uniqueProduct.add(element));
 
   React.useEffect(() => {
     const getProduct = async () => {
@@ -99,10 +99,9 @@ const Commission = () => {
     }
     getProduct();
   }, [])
-  // console.log(productSet);
-  // console.log(product);
+
   const commissionArr = product.map((element) => {
-    if(productSet.has(element.name)){
+    if (uniqueProduct.has(element.name)){
       const commission = Math.ceil((element.salePrice -
         element.purchasePrice) *
         element.commissionRate * 100) / 100;
