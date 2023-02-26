@@ -19,7 +19,7 @@ import AddSalesperson from './components/AddSalesperson'
 function App() {
   return (
     <Router>
-      <div>header</div>
+      {/* <div>header</div> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LogIn />}/>
@@ -38,7 +38,7 @@ function App() {
         <Route path="/home/Commission" element={<Commission />} />
         <Route path="*" element={<h1>Error page</h1>} />
       </Routes>
-      <div>footer</div>
+      {/* <div>footer</div> */}
     </Router>
   )
 }

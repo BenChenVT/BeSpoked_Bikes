@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 import { db } from '../config/firebase'
-import { collection, getDocs, query, where, getDoc, doc } from 'firebase/firestore';
+import { collection, getDocs, query, where, getDoc, doc, deleteDoc } from 'firebase/firestore';
 import { useNavigate, useParams } from 'react-router-dom';
 
 
@@ -60,6 +60,11 @@ const SaleDetail = () => {
     getQueryProduct();
   }, [sale.productName])
 
+  const deleteCurrent = async () => {
+    await deleteDoc(doc(db, "sales", id));
+    navigate(`/home/sale`);
+  }
+
 
   // can be simplified by function and map()
   return(
@@ -114,6 +119,7 @@ const SaleDetail = () => {
         <div className="item">
           {salesperson_q[0]?.isTerminated ? <h3>Termination Date: {salesperson_q[0]?.terminationDate}</h3> : <h3>Active SalesPerson</h3>}
         </div>
+        <button className="redButton" type="button" onClick={deleteCurrent}>Delete</button>
       </div>
     </div>
     
