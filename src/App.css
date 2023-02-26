@@ -98,6 +98,18 @@ body {
     align-items: center;
 }
 
+.input > label {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.input > input {
+    display: inline-block;
+    width: 200px;
+}
+
 .addSale > h1 {
     text-align: center;
     margin-bottom: 20px;
