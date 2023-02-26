@@ -101,7 +101,7 @@ body {
 
 
 .greenButton {
-    background-color: #4caf50;
+    background-color: #00ce07;
     color: white;
     border: none;
     border-radius: 5px;
@@ -115,7 +115,7 @@ body {
 }
 
 .redButton {
-    background-color: #af4c4c;
+    background-color: #e93838;
     color: white;
     border: none;
     border-radius: 5px;

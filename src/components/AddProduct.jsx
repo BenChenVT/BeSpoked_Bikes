@@ -3,7 +3,7 @@ import '../App.css';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../config/firebase';
 import { db } from '../config/firebase'
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, getDocs, query, where, getDoc, doc, deleteDoc, addDoc } from 'firebase/firestore';
 
 const AddProduct = () => {
 
@@ -18,10 +18,43 @@ const AddProduct = () => {
     addDoc(prodRef, newProd);
   }
 
+  //-------------------- handle duplicate---------------------
+  // this section of code is dealing with duplicate item,
+  // if the name of the product is duplicated, then we
+  // will find it in the firestore
+  const productRef = collection(db, "products");
+  const [productLookUp, setProductLookUp] = React.useState([]); 
+  React.useEffect(() => {
+    const qProduct = query(productRef, where("name", "==", String(product.name)));
+    const getQueryProduct = async () => {
+      const product_item = await getDocs(qProduct);
+      setProductLookUp(product_item.docs.map((doc) => ({
+         ...doc.data(), 
+         id: doc.id 
+        })));
+    }
+    getQueryProduct();
+    // console.log(productLookUp)
+    // productLookUp.length will be 1 if there is a duplicate item
+  }, [product]) // this product is user input
+
+  const checkDuplicate = () => {
+    return productLookUp.length === 0 ? true : false
+  }
+
+  // -------------------- end of handle duplicate --------------
+  
   const handleSubmit = (event) => {
-    event.preventDefault();
-    createNewProduct();
-    navigate(`/home/${String(auth.lastNotifiedUid)}`)
+    if(checkDuplicate()){
+      event.preventDefault();
+      createNewProduct();
+      navigate(`/home/${String(auth.lastNotifiedUid)}`)
+    }
+    else{
+      alert("This product already exists. No duplicate Please.")
+      setProductLookUp([]); // need to reset the list
+    }
+    
   };
 
   const handleChange = (event) => {
