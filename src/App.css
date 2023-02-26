@@ -155,12 +155,21 @@ body {
   padding: 20px;
 }
 
-#bar-chart {
-    background-color: #ccc;
+
+.report {
+    display: grid;
     height: 100%;
     width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
 }
 
+.report>div {
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #34dd9ca9;
+    border-radius: 10%;
+}
 
 
 .saleDetail {
@@ -170,14 +179,20 @@ body {
 	grid-gap: 10px;
 }
 
-.saleDetail > div{
+.saleDetail > div {
 	padding: 10px;
 	box-sizing: border-box;
 	background-color: #f0f0f0;
 }
 
+
+
 h3 {
 	margin: 0;
+}
+
+p {
+    margin: 0;
 }
 
 

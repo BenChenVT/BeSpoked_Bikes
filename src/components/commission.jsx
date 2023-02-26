@@ -23,6 +23,12 @@ const Commission = () => {
   const [product, setProduct] = React.useState([]);
   const [sale, setSale] = React.useState([]);
 
+  const [result, setResult] = React.useState([{
+    commission: 0, 
+    products:[], 
+    customers:[]
+  }]);
+
   //--------------------- pull date logic ---------------------
   // 1. we need to find if this person exists
   React.useEffect(() => {
@@ -40,6 +46,9 @@ const Commission = () => {
   }, [input])
 
   const isValidSalesperson = () => {
+    if(input.firstName===''){
+      return false;
+    }
     return salesperson.length === 0 ? false : true
   }
 
@@ -107,9 +116,26 @@ const Commission = () => {
         element.commissionRate * 100) / 100;
       return commission;
     }
+    else{
+      return 0;
+    }
   })
-  console.log(commissionArr);
 
+
+  const totalCommission = () =>{
+    if(commissionArr.length < 2){
+      console.log("I am here")
+      return commissionArr.length === 0 ? 
+          0 : commissionArr[1];
+    }
+    else{
+      return commissionArr.reduce((a, b) => {
+        return Number(a) + Number(b)
+      })
+    }
+  }
+  
+  console.log(totalCommission());
   //--------------------- end of logic ---------------------
   
   
@@ -122,17 +148,26 @@ const Commission = () => {
   }
 
   const handleSubmit = (event) => {
-    if (isValidSalesperson){
+    if (isValidSalesperson()){
       if(sale.length === 0){
-        // there is no sale for this person
+        alert("This salesperson does has any sale yet.");
       }else{
-        // we need to iterate through each bike find the commission with specific month
+        event.preventDefault();
+        setResult({
+          commission: totalCommission(),
+          products: ["hello", "hehe", "this"],
+          customers: ["personA", "personB"]
+        });
       }
     }else{
       alert("This salesperson does not exists. Please go to View Salesperson.");
-      setInput([]);
+      setInput({
+        firstName: '',
+        lastName: '',
+        startingMonth: ''
+      });
     }
-    event.preventDefault();
+    
   };
 
   return (
@@ -165,7 +200,7 @@ const Commission = () => {
             placeholder="i.e. May 2023"
             onChange={handleChange}/>
           <p>* Choose a starting month, and see 
-            the commission report for the next 4 month.</p>
+            the commission report for the next 3 month.</p>
           <button 
             className="greenButton" 
             type="submit">Search</button>
@@ -175,9 +210,23 @@ const Commission = () => {
         </div>
       </form>
       <div className="right">
-        <canvas id="bar-chart">
-          <BarChart />
-        </canvas>
+        <div className="report">
+          <div>
+            <h3>Totoal commission earned: {result.commission}</h3>
+          </div>
+          <div>
+            <h3>Products sold:</h3>
+            <p>{result.products}</p> 
+          </div>
+          <div>
+            <h3>Customer connections:</h3>
+            <p>{result.customers}</p>
+          </div>
+          <div>
+            <h3>+</h3>
+            <h3>Coming Soon</h3>
+          </div>
+        </div>
       </div>
     </div>
   )
