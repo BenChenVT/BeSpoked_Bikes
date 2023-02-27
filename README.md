@@ -19,6 +19,7 @@ To get started with BeSpoked Bike, follow these steps:
 2. In the file, run "npm install"(for the first time) in your terminal
 3. run "npm run dev" 
 4. Open the local host from terminal in your browser
+5. For the login, you can use username: Bella@gmail.com   and   Password: 000000
 
 ## Technologies Used
 
