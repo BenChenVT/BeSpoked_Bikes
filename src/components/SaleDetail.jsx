@@ -132,9 +132,9 @@ const SaleDetail = () => {
             {salesperson_q[0]?.startDate}</h3></div>
         <div className="item">
           <h3>Commission: $
-            {(product[0]?.
+            {Math.ceil((product[0]?.
               salePrice - product[0]?.purchasePrice) * product[0]?.
-              commissionRate}</h3></div>
+              commissionRate * 100) / 100}</h3></div>
         <div className="item">
           {salesperson_q[0]?.isTerminated ? 
           <h3>Termination Date: {salesperson_q[0]?.terminationDate}</h3> : 
