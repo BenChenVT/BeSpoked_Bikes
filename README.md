@@ -4,7 +4,7 @@
 
 ## Description
 
-BeSpoked Bike is a Sales Tracking System. It is built with Node.js, and uses React for the front-end. The project was developed using VS Code.
+BeSpoked Bike is a Sales Tracking System.
 
 ## Features
 
@@ -16,11 +16,13 @@ BeSpoked Bike is a Sales Tracking System. It is built with Node.js, and uses Rea
 
 To run BeSpoked Bike locally, follow these steps:
 
-1. Install node.js, npm. My version is v18.14.0 for node, 9.3.1 for npm.
-2. In the file, run "npm install"(for the first time) in your terminal.
-3. run "npm run dev" .
-4. Open the local host from terminal in your browser.
-5. For the login, you can use username: Bella@gmail.com   and   Password: 000000
+1. Install node.js, npm.(If not already) My version is v18.14.0 for node, 9.3.1 for npm.
+2. Download the zip file.
+3. "cd" to the file BeSpoked_Bikes
+4. In the file, run "npm install"(for the first time) in your terminal.
+5. run "npm run dev" .
+6. Open the local host from terminal in your browser.
+7. For the login, you can use username: Bella@gmail.com   and   Password: 000000
 
 ## Technologies Used
 
