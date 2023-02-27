@@ -1,6 +1,6 @@
 # BeSpoked_Bikes
 
-![Node.js Icon](https://img.icons8.com/color/48/000000/nodejs.png "Node.js") ![VS Code Icon](https://img.icons8.com/color/48/000000/visual-studio-code-2019.png "VS Code") ![React Icon](https://img.icons8.com/color/48/000000/react-native.png "React") ![Vite Icon](https://github.com/BenChenVT/BeSpoked_Bikes/blob/master/public/vite.svg)
+![Node.js Icon](https://img.icons8.com/color/48/000000/nodejs.png "Node.js") ![VS Code Icon](https://img.icons8.com/color/48/000000/visual-studio-code-2019.png "VS Code") ![React Icon](https://img.icons8.com/color/48/000000/react-native.png "React") ![Vite Icon](https://github.com/BenChenVT/BeSpoked_Bikes/blob/master/public/vite.svg) ![Firebase](https://github.com/BenChenVT/BeSpoked_Bikes/blob/master/public/firebase.png)
 
 ## Description
 
