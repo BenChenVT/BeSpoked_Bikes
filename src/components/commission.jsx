@@ -4,7 +4,7 @@ import '../App.css';
 import { auth } from '../config/firebase';
 import BarChart from './BarChart'
 import { db } from '../config/firebase'
-import { collection, getDocs, query, where, getDoc, doc, deleteDoc } from 'firebase/firestore';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 
 
 /**
