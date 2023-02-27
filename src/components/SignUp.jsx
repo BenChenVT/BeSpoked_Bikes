@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 /**
- * this component allow user to sign up and store the 
+ * This component allow user to sign up and store the 
  * username and password in firebase authentication
  * @returns 
  */
