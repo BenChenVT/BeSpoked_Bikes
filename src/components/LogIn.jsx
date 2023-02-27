@@ -50,26 +50,34 @@ const LogIn = () => {
   // renderring this page
   return (
     <div>
-      <input
-        placeholder="Username"
-        onChange={(e) => setEmail(e.target.value)} />
-      <input
-        type="password"
-        placeholder="Password"
-        onChange={(e) => setPassword(e.target.value)} />
-
-      <button 
-        className="greenButton" 
-        onClick={onLogin}>Log In</button>
-      <button 
-        className="greenButton" 
-        onClick={signInWithGoogle}>sign in with google</button>
-      <button 
-        className="greenButton" 
-        onClick={() => {navigate("/")}}> go to home page </button>
-      <button 
-        className="redButton" 
-        onClick={logOut} >log out</button>
+      <div className="up">
+        <div className="input">
+          <label>UserName:&nbsp;</label>
+          <input
+            id="username"
+            placeholder="Username"
+            onChange={(e) => setEmail(e.target.value)} /></div>
+        <div className="input">
+          <label>Passowrd:&nbsp;</label>
+          <input
+            type="password"
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)} /></div>
+      </div>
+      <div className="down">
+        <button 
+          className="greenButton" 
+          onClick={onLogin}>Log In</button>
+        <button 
+          className="greenButton" 
+          onClick={signInWithGoogle}>sign in with google</button>
+        <button 
+          className="greenButton" 
+          onClick={() => {navigate("/")}}> go to home page </button>
+        <button 
+          className="redButton" 
+          onClick={logOut} >log out</button>
+      </div>
     </div>
   )
 

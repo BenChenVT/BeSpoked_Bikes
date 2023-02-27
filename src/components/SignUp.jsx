@@ -29,19 +29,25 @@ const SignUp = () => {
   // render the page
   return (
     <div>
-      <input
-        placeholder="Username"
-        onChange={(e) => setEmail(e.target.value)} />
-      <input
-        type="password"
-        placeholder="Password"
-        onChange={(e) => setPassword(e.target.value)} />
-      <button 
-        className="greenButton" 
-        onClick={createUser} >Sign Up</button>
-      <button 
-        className="greenButton" 
-        onClick={() => { navigate("/") }}>go to home page </button>
+      <div className='input'>
+        <label>Username:&nbsp;</label>
+        <input
+          placeholder="Username"
+          onChange={(e) => setEmail(e.target.value)} /></div>
+      <div className='input'>
+        <label>Password:&nbsp;</label>
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)} /></div>
+      <div className='down'>
+        <button 
+          className="greenButton" 
+          onClick={createUser} >Sign Up</button>
+        <button 
+          className="greenButton" 
+          onClick={() => { navigate("/") }}>go to home page </button>
+      </div>
     </div>
   )
 }

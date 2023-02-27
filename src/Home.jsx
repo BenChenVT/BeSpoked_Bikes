@@ -26,13 +26,16 @@ const Home = () => {
   if(username === undefined){
     return (
       <div>
-        <h1>Please login or sign up to use the system</h1>
-        <button 
-          className="greenButton" 
-          onClick={() => { navigate("/login") }}>Log In</button>
-        <button 
-          className="greenButton" 
-          onClick={() => { navigate("/signup") }}>Sign Up</button>
+        <div className='welcomepage'>
+          <h1>Please login or sign up to use the system</h1></div>
+        <div className='down'>
+          <button 
+            className="greenButton" 
+            onClick={() => { navigate("/login") }}>Log In</button>
+          <button 
+            className="greenButton" 
+            onClick={() => { navigate("/signup") }}>Sign Up</button>
+        </div>
       </div>
     )
   }
@@ -40,7 +43,8 @@ const Home = () => {
   // render the page
   return(
     <div>
-      <h1>Welcome to BeSpoked Bikes Sales Tracking System</h1>
+      <div className='welcomepage'>
+        <h1>Welcome to BeSpoked Bikes Sales Tracking System</h1></div>
       <div className="grid-container">
         <button 
           onClick={() => { navigate("/home/customer") }} 
