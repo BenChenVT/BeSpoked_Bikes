@@ -2,7 +2,6 @@ import { useState } from 'react'
 import './App.css'
 import Home from './Home'
 import SignUp from './components/SignUp'
-import LogIn from './components/logIn'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Customer from './components/Customer'
 import Product from './components/Product'
@@ -15,6 +14,7 @@ import EditSalesperson from './components/EditSalesperson'
 import SaleDetail from './components/SaleDetail'
 import AddProduct from './components/AddProduct'
 import AddSalesperson from './components/AddSalesperson'
+import LogIn from './components/logIn'
 
 function App() {
   return (
