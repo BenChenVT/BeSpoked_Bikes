@@ -5,8 +5,8 @@ import { db } from '../config/firebase'
 import { getDoc, updateDoc, doc, deleteDoc } from 'firebase/firestore';
 
 /**
- * this components will allow use to edit produc
- * this page can be accessed from view Product
+ * This components will allow use to edit produc
+ * This page can be accessed from view Product
  * @returns 
  */
 const EditProduct = () => {

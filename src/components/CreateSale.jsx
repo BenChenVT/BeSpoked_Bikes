@@ -7,7 +7,7 @@ import { collection, addDoc } from 'firebase/firestore';
 
 
 /**
- * This functional component is in charge of create a new sale
+ * This component is in charge of create a new sale
  */
 const CreateSale = () => {
 

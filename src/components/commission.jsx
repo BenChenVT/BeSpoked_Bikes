@@ -8,7 +8,7 @@ import { collection, getDocs, query, where, getDoc, doc, deleteDoc } from 'fireb
 
 
 /**
- * In this functional component, program will show a salesperson's
+ * In this component, program will show a salesperson's
  * total commission, what product he/she sold, and who she/he sold to
  * on a certain quarter, 
  * @returns 

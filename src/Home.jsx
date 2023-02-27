@@ -1,8 +1,9 @@
 import React from 'react';
+import './App.css'
 import { useNavigate, useParams } from 'react-router-dom';
 import { auth } from './config/firebase';
 import { signOut } from 'firebase/auth';
-import './App.css'
+
 
 /**
  * this is the home page which leads to 
