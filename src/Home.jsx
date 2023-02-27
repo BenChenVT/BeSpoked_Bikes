@@ -59,9 +59,9 @@ const Home = () => {
         <button 
           onClick={() => { navigate("/home/sale") }} 
           className="grid-item_view">View Sale</button>
-        <button 
-          onClick={() => { navigate("/home/CreateSale") }} 
-          className="grid-item_add">Create Sale</button>
+        <button
+          onClick={() => { navigate("/home/Commission") }}
+          className="grid-item_add">Commission Report</button>
         <button
           onClick={() => { navigate("/home/AddProduct") }}
           className="grid-item_add">Add Product</button>
@@ -69,8 +69,8 @@ const Home = () => {
           onClick={() => { navigate("/home/AddSalesperson") }}
           className="grid-item_add">Add Salesperson</button>
         <button
-          onClick={() => { navigate("/home/Commission") }}
-          className="grid-item_add">Commission Report</button>
+          onClick={() => { navigate("/home/CreateSale") }}
+          className="grid-item_add">Create Sale</button>
       </div>
       <button 
         className="redButton" 
